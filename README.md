@@ -17,3 +17,7 @@ through an object-oriented programming (OOP).
 [Documentation.](https://github.com/yolfry/FriendofMySQL/wiki/documentation)
 
 [Documentation  HTML.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/documentation/index.html)
+
+
+
+**©2018 YOLFRY BAUTISTA REYNOSO | YOLFRI1997@HOTMAIL.COM**
