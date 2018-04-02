@@ -39,7 +39,7 @@
 
 
 
-<form action="index.php" method="POST">
+<form action="example.php" method="POST">
 
 <img width="200px" src="https://images.freeimages.com/images/premium/previews/2200/22005669-illustrated-animals.jpg">
 <br>
