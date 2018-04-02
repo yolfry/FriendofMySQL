@@ -14,6 +14,12 @@ This one focuses on the wall of the Model -> Backend. In this way it manages to 
 through an object-oriented programming (OOP).
 
 
+
+* **[Example.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/example.php)**
+
+* **[DB EXAMPLE SQL.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/example.sql)**
+
+
 [Documentation.](https://github.com/yolfry/FriendofMySQL/wiki/documentation)
 
 [Documentation  HTML.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/documentation/index.html)
