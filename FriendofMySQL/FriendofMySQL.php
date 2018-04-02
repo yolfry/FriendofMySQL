@@ -1,4 +1,5 @@
 <?php /*namespace friendofmysql;*/
+/*FriendofMySQL 1.0.1*/
 
 /*  Three parameters That can make magic $pass (password of the friendofmysql library ), $cmd (Command what you want to do), $data (The data if you are going to insert data if it is not left blank). */
 
