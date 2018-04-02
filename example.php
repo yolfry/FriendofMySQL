@@ -34,7 +34,6 @@
 
 </head>
 
-<a href="FriendofMySQL/documentation.html">Documentation</a>
 <body>
 
 
