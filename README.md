@@ -15,9 +15,9 @@ through an object-oriented programming (OOP).
 
 
 
-* **[Example.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/example.php)**
+* **[Example.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/example.php)**
 
-* **[DB EXAMPLE SQL.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/example.sql)**
+* **[DB EXAMPLE SQL.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/example.sql)**
 
 
 [Documentation.](https://github.com/yolfry/FriendofMySQL/wiki/documentation)
