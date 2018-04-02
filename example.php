@@ -42,7 +42,7 @@
 
 <form action="index.php" method="POST">
 
-<img width="30px" src="https://images.freeimages.com/images/premium/previews/2200/22005669-illustrated-animals.jpg">
+<img width="80px" src="https://images.freeimages.com/images/premium/previews/2200/22005669-illustrated-animals.jpg">
 <br>
 <labe>example. dog,cat </label>
 <br>
