@@ -15,9 +15,9 @@
 
       #Insert Animals 
 
-   if(!empty($_POST['name'])){ 
+   if(!empty($_POST["name"])){ 
       
-      $data['name']=$_POST['name'];
+      $data["name"]=$_POST["name"];
 
       #execute framework inserting the name of the animal 
       $FriendofMySQL = new FriendofMySQL("root","insert_animals",$data);
