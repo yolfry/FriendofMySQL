@@ -1,4 +1,4 @@
- <?php   /*namespace connection; 1 line error_reporting(0);*/ 
+ <?php   /*namespace connection; 1 line error_reporting(0); connection Mult.*/ 
  
 
   /*Names of the database*/
