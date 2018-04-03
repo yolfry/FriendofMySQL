@@ -2,8 +2,6 @@
 
 ![myimage-alt-tag](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/documentation/share.document/friendofMySQL.text.png)
 
-#Friend of MySQL 1.0.2 V
-
 ***Friend of MySQL is a simple php framework, which allows you to synchronize in an organized and formatted way the queries
 to the MySQL data base.***
 
