@@ -15,7 +15,7 @@ through an object-oriented programming (OOP).
 
 ## Friend of MySQL 1.0.2 V ##
 
-**Connection type settings added**
+NEW **Connection type settings added**
 
 * PDO
 
