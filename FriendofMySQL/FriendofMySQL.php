@@ -1,5 +1,5 @@
 <?php /*namespace friendofmysql;*/
-/*FriendofMySQL 1.0.1*/
+/*FriendofMySQL 1.0.2*/
 
 /*  Three parameters That can make magic $pass (password of the friendofmysql library ), $cmd (Command what you want to do), $data (The data if you are going to insert data if it is not left blank). */
 
@@ -15,10 +15,10 @@ public $callback;
 public function __construct($pass,$cmd,$data=""){
 
       try{   
-        
+  
 
                 //connection and name of the database
-                include("bin/connection"); /*batch connection*/
+                include("connection"); /*batch connection*/
 
                 $pass = strip_tags($pass); $query = strip_tags($cmd); //Data entry security protection
 
@@ -27,7 +27,16 @@ public function __construct($pass,$cmd,$data=""){
                 
                   $file="query/query.php";
                   include "MySQL.dll";
-                  $connection->close();
+
+
+                  /*Close connection*/
+                  if($CONFIG['connection']['type']=="MySQLi_Object"){
+                    $connection->close();
+                  }else if($CONFIG['connection']['type']=="MySQLi_Procedural"){
+                    mysqli_close($connection);
+                  }else if($CONFIG['connection']['type']=="PDO"){
+                    $connection = null;
+                  }
 
                  }
                  else
@@ -38,7 +47,7 @@ public function __construct($pass,$cmd,$data=""){
 
 
 
-        }catch(Exception $e) {
+        }catch(Exception $e){
 
             echo $e->getMessage(); /*Return error*/
 
@@ -48,7 +57,7 @@ public function __construct($pass,$cmd,$data=""){
 }
 
                    public function __destruct(){
-                    return true;
+                   return true;
       
                   }
 
@@ -56,9 +65,6 @@ public function __construct($pass,$cmd,$data=""){
 }
 
 #by yolfry
-
-
-
 
 
 ?>
