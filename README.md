@@ -19,11 +19,11 @@ through an object-oriented programming (OOP).
 
 **Connection type settings added**
 
-*PDO
+* PDO
 
-*MySQLi Procedural
+* MySQLi Procedural
 
-*MySQLi Object-Oriented
+* MySQLi Object-Oriented
 
 
 
