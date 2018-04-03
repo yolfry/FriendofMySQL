@@ -1,1 +1,69 @@
-<?php /*namespace connection; 1 line error_reporting(0);*/ include("friendofmysql/config/name_db.php"); /*Names of the database*/include("friendofmysql/config/server_db.php");/*Connection of the database*/$connection = new mysqli($CONFIG['db']['host'],$CONFIG['db']['user'],$CONFIG['db']['pass'],$CONFIG['db']['name'][1]);try{if($connection->connect_errno){$connection =""; throw new Exception('[80] Error of connection'); /*Error of connection*/}}catch(Exception $e){echo $e->getMessage();}?>
+ <?php   /*namespace connection; 1 line error_reporting(0);*/ 
+ 
+
+  /*Names of the database*/
+  include("friendofmysql/config/name_db.php"); 
+  /*server Ip*/
+  include("friendofmysql/config/server_db.php");
+
+  /*Connection Type , $CONFIG['connection']['type']*/
+  include("friendofmysql/config/connection_type.php");
+
+  if(!empty($CONFIG['connection']['type'])){
+
+    switch ($CONFIG['connection']['type']) {
+
+            case 'MySQLi_Object':
+            //Connection of the database (MySQLi_Object) 
+            $connection = new mysqli($CONFIG['db']['host'],$CONFIG['db']['user'],$CONFIG['db']['pass'],$CONFIG['db']['name'][1]);
+            try{
+
+              if($connection->connect_errno){
+                 $connection =""; throw new Exception('[80] Error of connection'.$connection->connect_error); 
+                 /*Error of connection*/}
+
+            }catch(Exception $e){
+              echo $e->getMessage();
+            }
+
+            break;
+
+            case 'MySQLi_Procedural':
+            //Connection of the database (MySQLi_Procedural)
+            $connection = mysqli_connect($CONFIG['db']['host'],$CONFIG['db']['user'],$CONFIG['db']['pass'],$CONFIG['db']['name'][1]);
+
+            if(!$connection){
+                $connection ="";  die("[80] Error of connection:" . mysqli_connect_error());
+                /*Error of connection*/
+              }
+
+            break;
+
+
+            case 'PDO':
+            //Connection of the database (PDO)
+            $connection = new PDO("mysql:host=".$CONFIG['db']['host'].";dbname=".$CONFIG['db']['name'][1]."", $CONFIG['db']['user'],$CONFIG['db']['pass']);
+            try{
+            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            }catch(PDOException $e){
+              echo $e->getMessage();
+            }
+            break;
+
+        
+        default:
+            echo"Error -> connection type, no exists";
+            $connection="";
+            break;
+    }
+
+  }else{
+    echo"Error -> connection  var";
+    $connection="";
+  }
+
+
+
+             
+        
+?>

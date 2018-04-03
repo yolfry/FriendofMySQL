@@ -1,9 +1,11 @@
 <?php /*box query  
 
 Parameters:
-($connection)       #connection of the database.
+($connection)       #connection of the database. (MySQLi_Object),(MySQLi_Procedural),(PDO)
 ($data)             #data sent from the implementation.
 ($this->callback)   #Result of return: false, true or data.      These are the utility parameters*/
+
+
 
 
 /* first box query->consul_animals */
@@ -38,11 +40,12 @@ if($cmd =="consul_animals"){
 
 /*second box query -> insert_animals*/
 if($cmd =="insert_animals"){
+                          
 
-                            $sql = "INSERT INTO `animals`(`id_animals`, `name`) VALUES ('','".$data['name']/*input data parameter*/."')";
+                           $sql = "INSERT INTO `animals`(`id_animals`, `name`) VALUES ('','".$data['name']."')";
                            if(!$connection->query($sql)){ 
                              $this->callback="false";
-                            }
+                           }
  
                             $this->callback="true"; 
       
