@@ -11,7 +11,6 @@ This one focuses on the wall of the Model -> Backend. In this way it manages to 
 through an object-oriented programming (OOP).
 
 
-
 ## Friend of MySQL 1.0.2 V ##
 
 NEW **Connection type settings added**
