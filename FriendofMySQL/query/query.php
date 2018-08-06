@@ -41,7 +41,7 @@ if ($cmd == 'insert_animals') {
   #Insert Animals Automating the:  code query/complement/Add_property_and_methods.php
 
   $sql = "INSERT INTO `animals`(`id_animals`, `name`) VALUES ('','" . $data['name'] . "')";
-  self::retriever($connection, $data, $sql);
+  self::My_method($connection, $data, $sql);
   */
 }
 

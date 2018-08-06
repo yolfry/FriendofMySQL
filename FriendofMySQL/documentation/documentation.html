@@ -798,7 +798,7 @@
             <div class="diagram">
                 <ul style="font-size:15px;">
                     <code>
-                        <font new>public function</font> <font function>retriever</font>(<font var>$connection</font>,<font var>$data</font>,<font var>$sql</font>)
+                        <font new>public function</font> <font function>My_method</font>(<font var>$connection</font>,<font var>$data</font>,<font var>$sql</font>)
                         {
                             <br>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font coment>#Insert Animals</font>
@@ -818,7 +818,7 @@
             </div>
 
             <p>
-                These parameters controlled by the retriever method:
+                These parameters controlled by the My_method method:
                 <code><font var>$connection</font> ,
                 <font class>$data </font>,
                 <font class>$sql </font>,.</code>
@@ -827,7 +827,7 @@
 
 
             <p>
-                It is to collect the saying we send through self :: retriever (); to easily lift it to a non-repeated block of consultation.
+                It is to collect the saying we send through self :: My_method (); to easily lift it to a non-repeated block of consultation.
             </p>
 
             <p>
@@ -843,7 +843,7 @@
                             <font if>if</font>(<font var>$cmd</font> =<font data>"insert_animals"</font>){
                                 <br>
                                 &nbsp;&nbsp;&nbsp;&nbsp;<font var>$sql</font> = <font data>"</font><font new>INSERT INTO</font> <font data>`animals`(`id_animals`, `name`)</font> <font new>VALUES</font> <font data>('','"</font> . <font var>$data</font><font data>['name'] . "')"</font>;
-                                <br>&nbsp;&nbsp;&nbsp;&nbsp;<font new>self</font>::<font function>retriever</font>(<font var>$connection</font>, <font var>$data</font>,<font var>$sql</font>);
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;<font new>self</font>::<font function>My_method</font>(<font var>$connection</font>, <font var>$data</font>,<font var>$sql</font>);
                                 <br>
                                 }
                             

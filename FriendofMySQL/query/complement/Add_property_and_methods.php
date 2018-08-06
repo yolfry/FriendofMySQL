@@ -10,7 +10,7 @@ class add_property_and_methods
 
 
     #This method can be called with self:: from query.php
-    public function retriever($connection,$data,$sql)
+    public function My_method($connection,$data,$sql)
     {
         #Insert Animals
         if (!$connection->query($sql)) {
