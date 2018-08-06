@@ -7,48 +7,34 @@ Parameters:
 
 
 
+switch ($cmd) {
+  case 'consul_animals':
+    #Select Animals
+    $sql = "SELECT * FROM animals";
+    $datos = $connection/*connection parameter*/->query($sql);
+    $animals = array();
+    $table = array();
+    $i = 0;
 
-/* first box query->consul_animals */
-if($cmd =="consul_animals"){
+    while ($animals = $datos->fetch_array(MYSQLI_BOTH)) {
+      $table[$i]['id_animals'] = strip_tags($animals['id_animals']);
+      $table[$i]['name'] = strip_tags($animals['name']);
 
-                                  $sql ="SELECT * FROM animals";
-                                  $datos = $connection/*connection parameter*/->query($sql);
-                                  $animals = array();
-                                  $table = array();
-                                  $i=0;
-                            
-                                  while($animals = $datos->fetch_array(MYSQLI_BOTH)){
-                                  $table[$i]['id_animals'] = strip_tags($animals['id_animals']);
-                                  $table[$i]['name'] = strip_tags($animals['name']);
-                                  
-                                  $i++;                      
-                                            
-                                 }
-                            
-                                 $this->callback = $table;/*return parameter*/
-                                
-                           }
+      $i++;
 
+    }
 
+    $this->callback = $table;/*return parameter*/
+    break;
 
+  case 'insert_animals':
+    $sql = "INSERT INTO `animals`(`id_animals`, `name`) VALUES ('','" . $data['name'] . "')";
+    self::retriever($connection, $data,$sql);
+    break;
 
-
-
-
-
-
-
-/*second box query -> insert_animals*/
-if($cmd =="insert_animals"){
-                          
-
-                           $sql = "INSERT INTO `animals`(`id_animals`, `name`) VALUES ('','".$data['name']."')";
-                           if(!$connection->query($sql)){ 
-                             $this->callback="false";
-                           }
- 
-                            $this->callback="true"; 
-      
+  default:
+    $this->callback = false;
+    break;
 }
 
 
@@ -58,7 +44,7 @@ if($cmd =="insert_animals"){
 
 
 
-/* 1.0.2 V
+/* 1.0.3 V
 Example red
 
 
@@ -529,6 +515,6 @@ if($cmd =="select_day"){
 
 
 
-*/
+ */
 
   

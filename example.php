@@ -24,7 +24,7 @@
 
       #callback
       if(!empty($FriendofMySQL->callback)){
-        if($FriendofMySQL->callback=="false"){
+        if($FriendofMySQL->callback==false){
           echo "<script>alert('error');</script>";
         }
       }   

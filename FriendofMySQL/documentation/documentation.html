@@ -23,14 +23,14 @@
 
 
         footer,
-            header,
-            .img_logo_tex,
-            h1,
-            hr,
-            p,
-            .diagram {
-                width: 1500px;
-            }
+        header,
+        .img_logo_tex,
+        h1,
+        hr,
+        p,
+        .diagram {
+            width: 1500px;
+        }
 
 
         [logo] [title] {
@@ -40,7 +40,7 @@
 
         h1,
         hr {
-            
+
             font-family: lucida;
             float: left;
             margin-top: 10px;
@@ -207,7 +207,7 @@
 
     <header>
         <div logo>
-            <span title>Friend of MySQL 1.0.2</span>
+            <span title>Friend of MySQL 1.0.3</span>
         </div>
     </header>
 
@@ -218,7 +218,8 @@
 
             <p>
 
-                Friend of MySQL is a simple php framework, which allows you to synchronize in an organized and structured way the queries to the MySQL database..
+                Friend of MySQL is a simple php framework, which allows you to synchronize in an organized and structured way the queries
+                to the MySQL database.
             </p>
 
             <p>
@@ -739,6 +740,123 @@
                 In this way, data is consulted in "Friend of MySQL"
             </p>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <br>
+            <h3>Add properties and methods to FriendofMySQL</h3>
+
+            <p>
+                To add a new property or methods, we must address:
+                <font file>FriendofMySQL/query/complement/Add_property_and_methods.php.</font>
+
+                <br> Inside the class Add_property_and_methods We add the properties or methods that we want to use with query.php
+                in the following way:
+            </p>
+
+
+            <div class="diagram">
+                <ul style="font-size:15px;">
+                    <code>
+                        <font new>public function</font> <font function>retriever</font>(<font var>$connection</font>,<font var>$data</font>,<font var>$sql</font>)
+                        {
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font coment>#Insert Animals</font>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font if>if</font>(!<font var>$connection</font>-><font function>query</font>(<font var>$sql</font>)) {
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font new>$this</font>-><font var>callback</font> =  <font new>false</font>;
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font new>$this</font>-><font var>callback</font> = <font new>true</font>;
+                            <br>
+                        }          
+                    </code>
+
+                </ul>
+            </div>
+
+            <p>
+                These parameters controlled by the retriever method:
+                <code><font var>$connection</font> ,
+                <font class>$data </font>,
+                <font class>$sql </font>,.</code>
+
+            </p>
+
+
+            <p>
+                It is to collect the saying we send through self :: retriever (); to easily lift it to a non-repeated block of consultation.
+            </p>
+
+            <p>
+                <ul>
+                    <li>Call the new property or aggregate method, in query.php</li>
+                </ul>
+            </p>
+
+
+            <div class="diagram">
+                <ul style="font-size:15px;">
+                    <code>
+                            <font if>if</font>(<font var>$cmd</font> =<font data>"insert_animals"</font>){
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<font var>$sql</font> = <font data>"</font><font new>INSERT INTO</font> <font data>`animals`(`id_animals`, `name`)</font> <font new>VALUES</font> <font data>('','"</font> . <font var>$data</font><font data>['name'] . "')"</font>;
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;<font new>self</font>::<font function>retriever</font>(<font var>$connection</font>, <font var>$data</font>,<font var>$sql</font>);
+                                <br>
+                                }
+                            
+                    </code>
+
+                </ul>
+            </div>
+
+            <p>
+
+                    In conclusion Add Property And Methods.php is the object that is included in FriendOfMySQL as a complement to improve query performance or automate queries and avoid writing so many codes."
+            </p>
+
         </div>
 
         <br>
@@ -749,7 +867,8 @@
             <p>
                 DEVELOPED BY YOLFRY BAUTISTA REYNOSO IN 2018
                 <br>
-                <img width="100px" src="https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/documentation/html.document/gpl.png" />
+                <img width="100px" src="https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/FriendofMySQL/documentation/html.document/gpl.png"
+                />
                 <br> GPL V3 LICENSIA
             </p>
         </div>
