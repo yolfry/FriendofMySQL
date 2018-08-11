@@ -15,28 +15,26 @@
 
       #Insert Animals 
 
-   if(!empty($_POST["name"])){ 
-      
-      $data["name"]=$_POST["name"];
+  if (!empty($_POST["name"])) {
+
+    $data["name"] = $_POST["name"];
 
       #execute framework inserting the name of the animal 
-      $FriendofMySQL = new FriendofMySQL("root","insert_animals",$data);
+    $FriendofMySQL = new FriendofMySQL("root", "insert_animals", $data);
 
       #callback
-      if(!empty($FriendofMySQL->callback)){
-        if($FriendofMySQL->callback==false){
-          echo "<script>alert('error');</script>";
-        }
-      }   
-   }
+    if (!empty($FriendofMySQL->callback)) {
+      if ($FriendofMySQL->callback == false) {
+        echo "<script>alert('error');</script>";
+      }
+    }
+  }
 
-?>
+  ?>
 
 </head>
 
 <body>
-
-
 
 
 <form action="example.php" method="POST">
@@ -51,18 +49,8 @@
 </form>
 
 
-  
-
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
@@ -100,7 +88,6 @@
   <title>EXAMPLE 2</title>
 </head>
 <body>
-
 <table>
    <tr>
      <th>ID</th>
@@ -110,38 +97,36 @@
 <!--HTML-->
 
 
-<?php /*Include framework*/  /*PHP 7.1.0*/  require_once("FriendofMySQL/FriendofMySQL.php");  
+<?php /*Include framework*/  /*PHP 7.1.0*/ require_once("FriendofMySQL/FriendofMySQL.php");  
 
 
   
   /*Tabla animals*/   
   #execute framework inserting the name of the animal
-  $FriendofMySQL = new FriendofMySQL("root","consul_animals");
+$FriendofMySQL = new FriendofMySQL("root", "consul_animals");
 
 
 
-  if($FriendofMySQL->callback!="false"){
+if ($FriendofMySQL->callback != "false") {
 
-    for($i=0;$i<count($FriendofMySQL->callback);$i++):
-           
-      ?>
+  for ($i = 0; $i < count($FriendofMySQL->callback); $i++) :
+
+  ?>
     
 
         <tr>
-          <td><?php  echo $FriendofMySQL->callback[$i]['id_animals']; ?></td>
+          <td><?php echo $FriendofMySQL->callback[$i]['id_animals']; ?></td>
            <td><?php echo $FriendofMySQL->callback[$i]['name']; ?></td> 
         </tr>
 
     
     <?php
-      
+
     endfor;
 
-   
-  }
-  else
-  {
-    echo"<script>alert('error');</script>";
+
+  } else {
+    echo "<script>alert('error');</script>";
   }
 
 
