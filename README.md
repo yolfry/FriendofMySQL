@@ -33,7 +33,7 @@ NEW **Connection type settings added**
 * **[DB EXAMPLE SQL.](https://raw.githubusercontent.com/yolfry/FriendofMySQL/master/example.sql)**
 
 
-[Documentation.](https://luballsoftware.com/FriendofMySQL/)
+[Documentation.](https://mercadovirtualrd.com/models/FriendofMySQL/documentation/documentation.html)
 
 
 
