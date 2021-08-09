@@ -1,6 +1,6 @@
 # Friend of MySQL
 
-![myimage-alt-tag](https://lh6.googleusercontent.com/rvIkMVD_oDTpDaJSovemeBDuWe4CDFgiQzkB1c5i7A2ZoCJkkTL1eOGETWMz8idygwlLILsBuyNJ6w=w1920-h885-rw)
+![myimage-alt-tag](https://i.ibb.co/kX8n3Y2/friendof-My-SQL-text.png)
 
 ***Friend of MySQL is a simple php framework, which allows you to synchronize in an organized and structured way the queries to the MySQL database.***
 
