@@ -1,0 +1,18 @@
+{
+    "name": "ypw/friendofmysql",
+    "description": "Create your php project from scratch with the mysql query library, which allows you to organize the mysql query structure of your project in a single file",
+    "type": "library",
+    "license": "GPL-V3",
+    "autoload": {
+        "psr-4": {
+            "YPW\\Friendofmysql\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yolfry",
+            "email": "yolfri1997@hotmail.com"
+        }
+    ],
+    "require": {}
+}

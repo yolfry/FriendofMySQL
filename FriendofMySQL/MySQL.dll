@@ -1,1 +1,0 @@
-<?php /*MySQL*/ if(!empty($query)){ include($file); }else{echo"Error.query";}
