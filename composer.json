@@ -14,5 +14,7 @@
             "email": "yolfri1997@hotmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=5.5.0"
+    }
 }

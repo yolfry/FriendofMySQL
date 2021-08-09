@@ -38,8 +38,14 @@ NEW **Connection type settings added**
 
 ## Installation ##
 
-
+```json
+"ypw/friendofmysql": "^6.5"
 ```
+
+or run
+
+
+```sh
 composer require ypw/friendofmysql
 
 ```
@@ -53,7 +59,7 @@ To use this library, you need to create a query file called "queryApp" to store 
 
 > queryApp.php
 
-```
+```php
 
 <?php
 
@@ -99,7 +105,7 @@ switch ($cmd) {
 > api.php
 
 
-```
+```php
 use YPW\FriendOfMysql\FriendofMySQL;
 
 $fom = new FriendofMySQL(true);
