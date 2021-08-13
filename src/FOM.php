@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FriendOfMysql 2.1.0.
+ * FriendOfMysql 2.1.1.
  * PHP Version =>7.2.
  *
  * @see https://github.com/yolfry/FriendOfMysql/ The FriendOfMysql GitHub project

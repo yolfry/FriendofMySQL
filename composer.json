@@ -8,12 +8,10 @@
             "ypw\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "yolfry",
-            "email": "yolfri1997@hotmail.com"
-        }
-    ],
+    "authors": [{
+        "name": "yolfry",
+        "email": "yolfri1997@hotmail.com"
+    }],
     "require": {
         "php": ">=5.5.0"
     }

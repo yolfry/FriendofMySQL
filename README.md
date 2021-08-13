@@ -9,9 +9,11 @@ This Framework was developed for the applications and web platform in MVC, that 
 This one focuses on the wall of the Model -> Backend. In this way it manages to organize the queries sent to the database,
 through an object-oriented programming (OOP).
 
-## Friend of MySQL 2.1.0 V
+## Friend of MySQL 2.1.1 V
 
-NEW **Implementation control of properties and methods**
+- README Edit
+
+## Friend of MySQL 2.1.0 V
 
 - Composer Autoload
 - class FOM namespace ypw
@@ -107,9 +109,12 @@ switch ($cmd) {
 > api.php
 
 ```php
-use YPW\FriendOfMysql\FriendofMySQL;
 
-$FOM = new FriendofMySQL(true);
+use ypw\FOM;
+
+include_once "./vendor/autoload.php";
+
+$FOM = new FOM(true);
 
 $FOM->type = 'MySQLi_Object';
 $FOM->serverDB ='localhost';
