@@ -48,7 +48,7 @@ NEW **Connection type settings added**
 ## Installation
 
 ```json
-"ypw/friendofmysql": "^6.5"
+"ypw/friendofmysql": "^2.1"
 ```
 
 or run
