@@ -2,41 +2,48 @@
 
 ![myimage-alt-tag](https://i.ibb.co/kX8n3Y2/friendof-My-SQL-text.png)
 
-***Friend of MySQL is a simple php framework, which allows you to synchronize in an organized and structured way the queries to the MySQL database.***
+**_Friend of MySQL is a simple php framework, which allows you to synchronize in an organized and structured way the queries to the MySQL database._**
 
 This Framework was developed for the applications and web platform in MVC, that is, model, view, controller.
-
 
 This one focuses on the wall of the Model -> Backend. In this way it manages to organize the queries sent to the database,
 through an object-oriented programming (OOP).
 
+## Friend of MySQL 2.1.0 V
 
-
-
-## Friend of MySQL 2.0.0 V ##
 NEW **Implementation control of properties and methods**
-* Composer support
-* Dynamic query file path
-* Mysql ports
-* Dynamic Mysql configuration
+
+- Composer Autoload
+- class FOM namespace ypw
 
 
-## Friend of MySQL 1.0.3 V ##
+
+## Friend of MySQL 2.0.0 V
+
 NEW **Implementation control of properties and methods**
-* query/complement/Add_property_and_methods.php
 
+- Composer support
+- Dynamic query file path
+- Mysql ports
+- Dynamic Mysql configuration
 
-## Friend of MySQL 1.0.2 V ##
+## Friend of MySQL 1.0.3 V
+
+NEW **Implementation control of properties and methods**
+
+- query/complement/Add_property_and_methods.php
+
+## Friend of MySQL 1.0.2 V
 
 NEW **Connection type settings added**
 
-* PDO
+- PDO
 
-* MySQLi Procedural
+- MySQLi Procedural
 
-* MySQLi Object-Oriented
+- MySQLi Object-Oriented
 
-## Installation ##
+## Installation
 
 ```json
 "ypw/friendofmysql": "^6.5"
@@ -44,18 +51,14 @@ NEW **Connection type settings added**
 
 or run
 
-
 ```sh
 composer require ypw/friendofmysql
 
 ```
 
-
-
-## Setting ##
+## Setting
 
 To use this library, you need to create a query file called "queryApp" to store all the application's queries.
-
 
 > queryApp.php
 
@@ -101,30 +104,25 @@ switch ($cmd) {
 
 ```
 
-
 > api.php
-
 
 ```php
 use YPW\FriendOfMysql\FriendofMySQL;
 
-$fom = new FriendofMySQL(true);
+$FOM = new FriendofMySQL(true);
 
-$fom->type = 'MySQLi_Object';
-$fom->serverDB ='localhost'; 
-$fom->nameDB = 'mysql';
-$fom->userDB = 'root';
-$fom->passDB = '';
-$fom->port = '3306';
+$FOM->type = 'MySQLi_Object';
+$FOM->serverDB ='localhost';
+$FOM->nameDB = 'mysql';
+$FOM->userDB = 'root';
+$FOM->passDB = '';
+$FOM->port = '3306';
 
-$fom->fileQuery = 'queryApp.php';
+$FOM->fileQuery = __DIR__ ."/queryApp.php";
 
-$fom->sed('consul_animals');
+$FOM->sed('consul_animals');
 
-echo $fom->res;
-````
-
-
-
+echo $FOM->res;
+```
 
 **©2021 YOLFRY BAUTISTA REYNOSO | YOLFRI1997@HOTMAIL.COM**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FriendOfMysql 2.0.0.
+ * FriendOfMysql 2.1.0.
  * PHP Version =>7.2.
  *
  * @see https://github.com/yolfry/FriendOfMysql/ The FriendOfMysql GitHub project
@@ -14,7 +14,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-namespace YPW\FriendOfMysql;
+namespace ypw;
 
 /* Three parameters That can make magic $pass (password of the friendofmysql library ), $cmd (Command what you want to do), $data (The data if you are going to insert data if it is not left blank). */
 
@@ -23,7 +23,7 @@ use PDO;
 use mysqli;
 
 
-class FriendofMySQL
+class FOM
 {
 
   /*properties of data outputs | Return call*/
@@ -184,7 +184,7 @@ echo $fom->res;
       if (!empty($query)) {
 
         if (file_exists($file_query)) {
-          include_once($file);
+          include_once($file_query);
         } else {
           throw new Error("Error The query file does not exist");
         }
