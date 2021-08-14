@@ -9,6 +9,10 @@ This Framework was developed for the applications and web platform in MVC, that 
 This one focuses on the wall of the Model -> Backend. In this way it manages to organize the queries sent to the database,
 through an object-oriented programming (OOP).
 
+## Friend of MySQL 2.2.0 V
+
+- Set Data, push Query $data
+
 ## Friend of MySQL 2.1.2 V
 
 - Autoload Update
@@ -129,7 +133,7 @@ $FOM->port = '3306';
 
 $FOM->fileQuery = __DIR__ ."/queryApp.php";
 
-$FOM->sed('consul_animals');
+$FOM->sed('consul_animals',null);
 
 echo $FOM->res;
 ```

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FriendOfMysql 2.1.2.
+ * FriendOfMysql 2.2.0.
  * PHP Version =>7.2.
  *
  * @see https://github.com/yolfry/FriendOfMysql/ The FriendOfMysql GitHub project
@@ -166,7 +166,7 @@ echo $fom->res;
 
 
 
-  public function sed($cmd = null)
+  public function sed($cmd = null,$data=null)
   {
     try {
 
