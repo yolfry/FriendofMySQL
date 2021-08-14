@@ -1,7 +1,7 @@
 <?php
 
 /**
- * FriendOfMysql 2.2.0.
+ * FriendOfMysql 2.3.0.
  * PHP Version =>7.2.
  *
  * @see https://github.com/yolfry/FriendOfMysql/ The FriendOfMysql GitHub project
@@ -27,21 +27,23 @@ class FOM
 {
 
   /*properties of data outputs | Return call*/
-  public static $res;
-  public static $active;
+  public  $res;
+  public  $active;
 
   /*Conection DB*/
-  public static $type;
+  public  $type;
   /*MySQLi_Object*/ /*MySQLi_Procedural*/  /*PDO*/
 
   //configuration by  Data Base name 
-  public static $nameDB;
-  public static $serverDB;
-  public static $userDB;
-  public static $passDB;
-  public static $port;
+  public  $nameDB;
+  public  $serverDB;
+  public  $userDB;
+  public  $passDB;
+  public  $port;
 
-  public static $fileQuery;
+  public  $fileQuery;
+
+  public $connection;
 
   /* 
   -------------------------------------------------
@@ -125,6 +127,8 @@ echo $fom->res;
               throw new Error('Error of connection' . $connection->connect_error);
               /*Error of connection*/
             }
+
+            $this->connection = $connection;
           } catch (Error $e) {
             echo $e->getMessage();
           }
@@ -141,14 +145,18 @@ echo $fom->res;
             /*Error of connection*/
           }
 
+          $this->connection = $connection;
+
           break;
 
 
         case 'PDO':
-          //Connection of the database (PDO)
-          $connection = new PDO("mysql:host=" . $CONFIG['db']['host'] . ";port=" . $CONFIG['db']['port'] . ";dbname=" . $CONFIG['db']['name'][1] . "", $CONFIG['db']['user'], $CONFIG['db']['pass']);
+
           try {
+            //Connection of the database (PDO)
+            $connection = new PDO("mysql:host=" . $CONFIG['db']['host'] . ";port=" . $CONFIG['db']['port'] . ";dbname=" . $CONFIG['db']['name'][1] . "", $CONFIG['db']['user'], $CONFIG['db']['pass']);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->connection = $connection;
           } catch (Error $e) {
             echo $e->getMessage();
           }
@@ -166,12 +174,14 @@ echo $fom->res;
 
 
 
-  public function sed($cmd = null,$data=null)
+  public function sed($cmd = null, $data = null)
   {
     try {
 
       //connection and name of the database
       $this->connection();
+
+      $connection = $this->connection;
 
       /*Var declare*/
       $query = strip_tags($cmd); //Data entry security protection
@@ -194,12 +204,12 @@ echo $fom->res;
 
 
       /*Close connection*/
-      if ($CONFIG['connection']['type'] == "MySQLi_Object") {
-        $connection->close();
-      } else if ($CONFIG['connection']['type'] == "MySQLi_Procedural") {
-        mysqli_close($connection);
-      } else if ($CONFIG['connection']['type'] == "PDO") {
-        $connection = null;
+      if ($this->type == "MySQLi_Object") {
+        $this->connection = null;
+      } else if ($this->type  == "MySQLi_Procedural") {
+        $this->connection = null;
+      } else if ($this->type  == "PDO") {
+        $this->connection = null;
       }
     } catch (Error $e) {
       echo $e->getMessage(); /*Return error*/

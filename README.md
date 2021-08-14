@@ -9,6 +9,11 @@ This Framework was developed for the applications and web platform in MVC, that 
 This one focuses on the wall of the Model -> Backend. In this way it manages to organize the queries sent to the database,
 through an object-oriented programming (OOP).
 
+
+## Friend of MySQL 2.3.0 V
+
+- Prop Statis
+
 ## Friend of MySQL 2.2.0 V
 
 - Set Data, push Query $data
@@ -93,20 +98,20 @@ switch ($cmd) {
       $i++;
     }
 
-    $this->callback = $table;/*return parameter*/
+    $this->res = $table;/*return parameter*/
     break;
 
     #Insert Animals
   case 'insert_animals':
     $sql = "INSERT INTO `animals`(`id_animals`, `name`) VALUES ('','" . $data['name'] . "')";
     if (!$connection->query($sql)) {
-      $this->callback = false;
+      $this->res = false;
     }
-    $this->callback = true;
+    $this->res = true;
     break;
 
   default:
-    $this->callback = false;
+    $this->res = false;
     break;
 }
 
