@@ -1,8 +1,8 @@
 <?php
 
 /**
- * FriendOfMysql 2.3.0.
- * PHP Version =>7.2.
+ * FriendOfMysql 2.4.0.
+ * PHP Version =>7.4.x.
  *
  * @see https://github.com/yolfry/FriendOfMysql/ The FriendOfMysql GitHub project
  *
@@ -16,100 +16,109 @@
 
 namespace ypw;
 
-/* Three parameters That can make magic $pass (password of the friendofmysql library ), $cmd (Command what you want to do), $data (The data if you are going to insert data if it is not left blank). */
+/* 
+* Three parameters That can make magic $pass (password of the friendofmysql library ), $cmd (Command what you want to do), $data (The data if you are going to insert data if it is not left blank). 
+*/
 
 use Error;
 use PDO;
 use mysqli;
 
 
+
+
 class FOM
 {
 
-  /*properties of data outputs | Return call*/
+  /*
+    * Properties of data outputs | Return call
+    */
   public  $res;
-  public  $active;
+  public  static $active;
+  public  $type = 'MySQLi_Object';
 
-  /*Conection DB*/
-  public  $type;
-  /*MySQLi_Object*/ /*MySQLi_Procedural*/  /*PDO*/
+  /*
+    * Conection DB:
+    * MySQLi_Object
+    * MySQLi_Procedural
+    * PDO
+    */
 
-  //configuration by  Data Base name 
+
+  /*
+    * configuration by  Data Base name
+    */
   public  $nameDB;
   public  $serverDB;
   public  $userDB;
   public  $passDB;
-  public  $port;
+  public  $port = '3306';
 
   public  $fileQuery;
-
   public $connection;
 
+
   /* 
-  -------------------------------------------------
-  Architecture
-  -------------------------------------------------
-
- 
-  use YPW\FriendOfMysql\FriendofMySQL;
-
-$fom = new FriendofMySQL(true);
-
-$fom->type = 'MySQLi_Object';
-$fom->serverDB ='localhost'; 
-$fom->nameDB = 'mysql';
-$fom->userDB = 'root';
-$fom->passDB = '';
-$fom->port = '3306';
-
-$fom->fileQuery = 'appQuery.php';
-
-$fom->sed('Query Get api Show');
-
-echo $fom->res; 
-
-  */
-
-
-
-  /* example. $pass = friendofmysql , $cmd = insert_animals */
+    * Example. $pass = friendofmysql , $cmd = insert_animals 
+    * @param boolean $active  Enable error output
+    */
   public function __construct($active = true)
   {
+    error_reporting($active);
+    FOM::$active = $active;
+  }
+
+
+  /* 
+    * @param string $e  error message
+    */
+  public static function Error($e = 'Error')
+  {
     try {
-      $this->active = $active;
+      throw new Error($e);
     } catch (Error $e) {
-      echo $e->getMessage(); /*Return error*/
+      if (FOM::$active)
+        echo $e->getMessage();
     }
   }
 
 
 
-  /*Database connection*/
+  /*
+    * Database connection
+    */
 
   public function connection()
   {
 
 
     /* 
--------------------------
--   Conections  Config  -     
--------------------------
-*/
+      * Conections  Config
+      */
 
     $CONFIG['connection']['type'] = $this->type;
-    /*MySQLi_Object*/ /*MySQLi_Procedural*/  /*PDO*/
+    /*
+      * MySQLi_Object 
+      * MySQLi_Procedural 
+      * PDO
+      */
 
-    //configuration by  Data Base name 
+    /*
+      * configuration by  Data Base name 
+      */
+
     $CONFIG['db']['name'][1] = $this->nameDB;
 
 
-    //Configuration of the database
+    /*
+      * Configuration of the database
+      */
+
     $CONFIG['db']['host'] = $this->serverDB;
     $CONFIG['db']['user'] = $this->userDB;
     $CONFIG['db']['pass'] = $this->passDB;
 
-    $CONFIG['db']['port'] = (!empty($this->port)) ? $this->port : null;
-
+    $CONFIG['db']['port'] = $this->port;
 
 
     if (!empty($CONFIG['connection']['type'])) {
@@ -117,109 +126,114 @@ echo $fom->res;
       switch ($CONFIG['connection']['type']) {
 
         case 'MySQLi_Object':
-
-          //Connection of the database (MySQLi_Object) 
+          /*
+            * Connection of the database (MySQLi_Object) 
+            */
           $connection = new mysqli($CONFIG['db']['host'], $CONFIG['db']['user'], $CONFIG['db']['pass'], $CONFIG['db']['name'][1], $CONFIG['db']['port']);
-
-          try {
-
-            if ($connection->connect_errno) {
-              throw new Error('Error of connection' . $connection->connect_error);
-              /*Error of connection*/
-            }
-
-            $this->connection = $connection;
-          } catch (Error $e) {
-            echo $e->getMessage();
+          if ($connection->connect_errno) {
+            FOM::Error('Error of connection ' . $connection->connect_error);
+            /*
+              * Error of connection
+              */
           }
-
+          $this->connection = $connection;
           break;
 
         case 'MySQLi_Procedural':
-          //Connection of the database (MySQLi_Procedural)
+          /*
+            * Connection of the database (MySQLi_Procedural)
+            */
           $connection = mysqli_connect($CONFIG['db']['host'], $CONFIG['db']['user'], $CONFIG['db']['pass'], $CONFIG['db']['name'][1], $CONFIG['db']['port']);
-
           if (!$connection) {
             $connection::close();
-            die("Error of connection:" . mysqli_connect_error());
-            /*Error of connection*/
+
+            FOM::Error('Error of connection ' . mysqli_connect_error());
+            /*
+              * Error of connection
+              */
           }
-
           $this->connection = $connection;
-
           break;
 
 
         case 'PDO':
-
-          try {
-            //Connection of the database (PDO)
-            $connection = new PDO("mysql:host=" . $CONFIG['db']['host'] . ";port=" . $CONFIG['db']['port'] . ";dbname=" . $CONFIG['db']['name'][1] . "", $CONFIG['db']['user'], $CONFIG['db']['pass']);
-            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->connection = $connection;
-          } catch (Error $e) {
-            echo $e->getMessage();
-          }
+          /* 
+            * Connection of the database (PDO)
+            */
+          $connection = new PDO("mysql:host=" . $CONFIG['db']['host'] . ";port=" . $CONFIG['db']['port'] . ";dbname=" . $CONFIG['db']['name'][1] . "", $CONFIG['db']['user'], $CONFIG['db']['pass']);
+          $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $this->connection = $connection;
           break;
 
-
         default:
-          echo "Error connection type, no exists";
+          FOM::Error("Error connection type (Driver), no exists, MySQLi_Object
+          MySQLi_Procedural,
+          PDO ");
           break;
       }
     } else {
-      echo "Error connection  type";
+      FOM::Error("Error connection  type");
     }
   }
 
 
 
+  /*
+    * @param string $cmd Query block name
+    * @param array $data Data to send to the query block
+    */
+
   public function sed($cmd = null, $data = null)
   {
-    try {
 
-      //connection and name of the database
-      $this->connection();
+    /*
+      * connection and name of the database
+      */
+    $this->connection();
 
-      $connection = $this->connection;
+    $connection = $this->connection;
 
-      /*Var declare*/
-      $query = strip_tags($cmd); //Data entry security protection
-      $file_query = strip_tags($this->fileQuery);
+    /*
+      * Var declare
+      */
+    $query = strip_tags($cmd);
+    $file_query = strip_tags($this->fileQuery);
 
 
-      //File Query Connect
+    /*
+      * File Query Connect
+      */
 
-      /*MySQL*/
-      if (!empty($query)) {
+    /*
+      * MySQL
+      */
 
-        if (file_exists($file_query)) {
-          include_once($file_query);
-        } else {
-          throw new Error("Error The query file does not exist");
-        }
+    if (!empty($query)) {
+
+      if (file_exists($file_query)) {
+        include $file_query;
       } else {
-        throw new Error("Error The query command is not defined");
+        FOM::Error("Error The query file does not exist");
       }
+    } else {
+      FOM::Error("Error The query command is not defined");
+    }
 
 
-      /*Close connection*/
-      if ($this->type == "MySQLi_Object") {
-        $this->connection = null;
-      } else if ($this->type  == "MySQLi_Procedural") {
-        $this->connection = null;
-      } else if ($this->type  == "PDO") {
-        $this->connection = null;
-      }
-    } catch (Error $e) {
-      echo $e->getMessage(); /*Return error*/
+    /*
+      * Close connection
+      */
+    if ($this->type == "MySQLi_Object") {
+      $this->connection = null;
+    } else if ($this->type  == "MySQLi_Procedural") {
+      $this->connection = null;
+    } else if ($this->type  == "PDO") {
+      $this->connection = null;
     }
   }
 
   public function __destruct()
   {
-    isset($this); /*Delete objet "this" */
+    isset($this);
   }
 }
-
-#by yolfry

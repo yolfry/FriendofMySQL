@@ -13,6 +13,6 @@
         "email": "yolfri1997@hotmail.com"
     }],
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=7.4.0"
     }
 }
